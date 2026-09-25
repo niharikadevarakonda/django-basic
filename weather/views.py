@@ -1,6 +1,7 @@
 import os
 import requests
 from django.shortcuts import render
+from .models import WeatherData
 
 
 def weather(request):
@@ -21,8 +22,7 @@ def weather(request):
 
         response = requests.get(url, params=params)
         data = response.json()
-        
-        
+
         if response.status_code == 200:
             weather_data = {
                 'city': data['name'],
@@ -31,6 +31,15 @@ def weather(request):
                 'humidity': data['main']['humidity'],
                 'wind_speed': data['wind']['speed']
             }
+
+            WeatherData.objects.create(
+                city=data['name'],
+                temperature=data['main']['temp'],
+                description=data['weather'][0]['description'],
+                humidity=data['main']['humidity'],
+                wind_speed=data['wind']['speed']
+            )
+
         else:
             weather_data = {
                 'error': data.get('message', 'Something went wrong')
