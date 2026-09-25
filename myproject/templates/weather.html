@@ -2,7 +2,11 @@
 <html>
 <head>
     <title>Weather App</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
+
 <body>
 
     <h1>Weather App</h1>
@@ -19,16 +23,21 @@
 
         {% if weather.error %}
 
-            <p>{{ weather.error }}</p>
+            <div class="weather-box">
+                <h2>Error</h2>
+                <p>{{ weather.error }}</p>
+            </div>
 
         {% else %}
 
-            <h2>{{ weather.city }}</h2>
+            <div class="weather-box">
+                <h2>{{ weather.city }}</h2>
 
-            <p>Temperature: {{ weather.temperature }} °C</p>
-            <p>Weather: {{ weather.description }}</p>
-            <p>Humidity: {{ weather.humidity }}%</p>
-            <p>Wind Speed: {{ weather.wind_speed }} m/s</p>
+                <p>Temperature: {{ weather.temperature }} °C</p>
+                <p>Weather: {{ weather.description }}</p>
+                <p>Humidity: {{ weather.humidity }}%</p>
+                <p>Wind Speed: {{ weather.wind_speed }} m/s</p>
+            </div>
 
         {% endif %}
 
