@@ -1,14 +1,35 @@
 body {
-    background-color: lightblue;
+    background-color: #f4f7fc;
+    font-family: Arial, sans-serif;
     text-align: center;
+    padding: 40px;
 }
 
 h1 {
-    color: darkblue;
+    color: #302b63;
 }
 
-a {
-    margin: 10px;
-    text-decoration: none;
-    color: blue;
+form {
+    margin: 20px;
+}
+
+input {
+    padding: 10px;
+    width: 250px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #8e44ad;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.weather-box {
+    background-color: white;
+    width: 350px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 10px;
 }
